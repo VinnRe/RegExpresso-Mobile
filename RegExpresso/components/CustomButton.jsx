@@ -18,7 +18,7 @@ const CustomButton = ({ title, handlePress, containerStyles, textStyles, isLoadi
             <Text
                 className={`text-button-text
                 font-poppinsMedium
-                text-lg
+                text-xl
                 ${textStyles}`}
             >
                 {title}

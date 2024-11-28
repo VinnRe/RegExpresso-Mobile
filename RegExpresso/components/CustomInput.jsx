@@ -13,11 +13,11 @@ const CustomInput = ({
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-        <View className={`relative border-2 rounded-lg ${hasError ? 'border-red-500' : 'border-none'} ${containerClass}`}>
+        <View className={`relative border-2 rounded-lg ${hasError ? 'border-red-500' : ' border-background-secondary'} ${containerClass}`}>
             <Text
                 className={`
-                    absolute left-4 z-10
-                    ${isFocused || value ? 'top-2 text-s text-white' : 'top-[18px] text-xl text-text'}
+                    absolute left-4 z-10 font-poppinsMedium
+                    ${isFocused || value ? 'top-1 text-s text-white' : 'top-[18px] left-20 text-xl text-input-text `'}
                     ${hasError ? 'text-red-500' : ''}
                     ${labelClass}
                 `}

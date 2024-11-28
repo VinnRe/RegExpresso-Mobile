@@ -11,15 +11,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from '../constants';
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
+import { useInputValidation } from "../hooks/useInputValidation";
 
 export default function App() {
-  const [inputValue, setInputValue] = useState('');
-  const [hasError, setHasError] = useState(false);
-
-  const handleInputChange = (text) => {
-    setInputValue(text);
-    setHasError(!text); // Example validation
-  };
+  const { inputValue, hasError, handleInputChange } = useInputValidation();
 
   return (
     <SafeAreaView className="bg-background-primary h-full px-12">
