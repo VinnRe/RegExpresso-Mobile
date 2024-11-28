@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./app/**/*.{js,jsx,ts,tsx}"], // Include all component paths
+	content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"], // Include all component paths
 	presets: [require("nativewind/preset")],
 	theme: {
 		extend: {
@@ -20,6 +20,11 @@ module.exports = {
 					text: "#f8f6f3",
 					placeholder: "#f1e2d0",
 				},
+				background: {
+					primary: "#e8cdad",
+					secondary: "#89695d",
+				},
+				white: "#f5f2f0",
 			},
 			fontFamily: {
 				poppinsBold: ["Poppins Bold", "sans-serif"],
