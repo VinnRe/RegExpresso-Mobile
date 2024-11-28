@@ -30,6 +30,12 @@ const RootLayout = () => {
           headerShown: false
         }}
       />
+      <Stack.Screen
+        name='about'
+        // options={{
+        //   headerShown: false
+        // }}
+      />
     </Stack>
   )
 }
