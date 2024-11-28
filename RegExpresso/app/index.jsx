@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image
 } from "react-native";
-import { Link } from "expo-router";
+import { Redirect, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from '../constants';
 import CustomButton from "../components/CustomButton";
@@ -17,14 +17,14 @@ export default function App() {
   const { inputValue, hasError, handleInputChange } = useInputValidation();
 
   return (
-    <SafeAreaView className="bg-background-primary h-full px-12">
+    <SafeAreaView className="bg-background-primary h-full">
       <ScrollView
-        contentContainerStyle={{ height: '100%' }}
+        contentContainerStyle={{ flexGrow: 1 }}
       >
-        <View className="w-full items-center h-full">
+        <View className=" w-full h-full items-center justify-center px-10 ">
           <Image
             source={images.logo}
-            className='w-[350px] h-[200px] ml-[-28px] my-[-30px]'
+            className='w-[350px] h-[200px] ml-[-28px] mt-[-60px] mb-[-30px]'
             resizeMode='contain'
           />
 
@@ -63,18 +63,19 @@ export default function App() {
             value={inputValue}
             onChangeText={handleInputChange}
             hasError={hasError}
+            leftProperty='left-24'
             containerClass="mt-5"
           />
 
           <CustomButton
             title="Convert DFA"
-            handlePress={() => { }}
+            handlePress={() => { router.push('/login') }}
             containerStyles="w-full mt-3"
           />
 
           <CustomButton
             title="Convert NFA"
-            handlePress={() => { }}
+            handlePress={() => { router.push('/home') }}
             containerStyles="w-full mt-3"
           />
         </View>
