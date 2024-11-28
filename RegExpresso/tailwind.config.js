@@ -1,10 +1,32 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	// NOTE: Update this to include the paths to all of your component files.
-	content: ["./app/**/*.{js,jsx,ts,tsx}"],
+	content: ["./app/**/*.{js,jsx,ts,tsx}"], // Include all component paths
 	presets: [require("nativewind/preset")],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				text: {
+					DEFAULT: "#3d2413",
+					hover: "#f1e2d0",
+				},
+				button: {
+					text: "#f1e2d0",
+					bg: "#3e241380",
+					hover: "#3d2413",
+				},
+				input: {
+					bg: "#3e24134d",
+					focus: "#3e24139e",
+					text: "#f8f6f3",
+					placeholder: "#f1e2d0",
+				},
+			},
+			fontFamily: {
+				poppinsBold: ["Poppins Bold", "sans-serif"],
+				poppinsMedium: ["Poppins Medium", "sans-serif"],
+				poppinsRegular: ["Poppins Regular", "sans-serif"],
+			},
+		},
 	},
 	plugins: [],
 };
