@@ -69,13 +69,20 @@ export default function App() {
 
           <CustomButton
             title="Convert DFA"
-            handlePress={() => { router.push('/login') }}
+            handlePress={() => { router.push('/home') }}
             containerStyles="w-full mt-3"
           />
 
           <CustomButton
             title="Convert NFA"
             handlePress={() => { router.push('/home') }}
+            containerStyles="w-full mt-3"
+          />
+
+          {/* Test Login */}
+          <CustomButton
+            title="Login"
+            handlePress={() => { router.push('/login') }}
             containerStyles="w-full mt-3"
           />
         </View>
