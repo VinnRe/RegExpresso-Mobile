@@ -31,10 +31,10 @@ const RootLayout = () => {
         }}
       />
       <Stack.Screen
-        name='about'
-        // options={{
-        //   headerShown: false
-        // }}
+        name='(tabs)'
+        options={{
+          headerShown: false
+        }}
       />
     </Stack>
   )
