@@ -10,6 +10,7 @@ const CustomInput = ({
     leftProperty,
     inputClass = '',
     labelClass = '',
+    secureTextEntry = false,
 }) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -34,6 +35,7 @@ const CustomInput = ({
                 onChangeText={onChangeText}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
+                secureTextEntry={secureTextEntry}
                 className={`bg-input-bg min-h-[60px] min-w-[100%] font-poppinsRegular text-xl text-input-text pl-4${inputClass}`}
                 placeholderTextColor="transparent"
             />
