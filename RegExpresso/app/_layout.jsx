@@ -19,17 +19,16 @@ const RootLayout = () => {
 
   if (!fontsLoaded && !error) return null;
 
+  const screenOptions = {
+    headerShown: false,
+  }
+
   return (
     <Stack>
-      <Stack.Screen name='index' options={{
-        headerShown: false
-      }} />
-      <Stack.Screen
-        name='(auth)'
-        options={{
-          headerShown: false
-        }}
-      />
+      <Stack.Screen name="index" options={screenOptions} />
+      <Stack.Screen name="(auth)" options={screenOptions} />
+      <Stack.Screen name="(tabs)" options={screenOptions} />
+      
       <Stack.Screen
         name='about'
         // options={{

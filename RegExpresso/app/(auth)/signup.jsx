@@ -15,6 +15,22 @@ const Signup = () => {
         confirmPassword: '',
     })
 
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
+    const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
+
+
+    const handleSignup = () => {
+        if (form.username && form.emai && form.password && form.confirmPassword) {
+            // Add login logic here (e.g., API call for authentication)
+            router.push('/home');
+        } else {
+            alert('Please fill in all fields');
+        }
+    };
+
     return (
         <SafeAreaView className='bg-background-primary h-full'>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -33,27 +49,32 @@ const Signup = () => {
                         value={form.email}
                         handleChangeText={(e) => setForm({ ...form, email: e })}
                         otherStyles="mt-3"
+                        keyboardType='email-address'
                     />
 
                     <FormField
                         title='Password'
                         value={form.password}
                         handleChangeText={(e) => setForm({ ...form, password: e })}
-                        otherStyles="mt-3"
-                        keyboardType='text'
+                        otherStyles="mt-3 flex-row"
+                        secureTextEntry={!showPassword}
+                        togglePasswordVisibility={togglePasswordVisibility}
+                        showPassword={showPassword}
                     />
 
                     <FormField
                         title='Confirm password'
                         value={form.confirmPassword}
                         handleChangeText={(e) => setForm({ ...form, confirmPassword: e })}
-                        otherStyles="mt-3"
-                        keyboardType='text'
+                        otherStyles="mt-3 flex-row"
+                        secureTextEntry={!showConfirmPassword}
+                        togglePasswordVisibility={toggleConfirmPasswordVisibility}
+                        showPassword={showConfirmPassword}
                     />
 
                     <CustomButton
                         title="Create account"
-                        handlePress={() => { router.push('/home') }}
+                        handlePress={handleSignup}
                         containerStyles="w-full mt-3"
                         textStyles='text-2xl'
                     />

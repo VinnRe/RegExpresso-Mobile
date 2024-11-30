@@ -12,6 +12,19 @@ const Login = () => {
         password: ''
     })
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
+    const handleLogin = () => {
+        if (form.username && form.password) {
+            // Add login logic here (e.g., API call for authentication)
+            router.push('/home');
+        } else {
+            alert('Please fill in all fields');
+        }
+    };
+
     return (
         <SafeAreaView className='bg-background-primary h-full'>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -29,13 +42,15 @@ const Login = () => {
                         title='Password'
                         value={form.password}
                         handleChangeText={(e) => setForm({ ...form, password: e })}
-                        otherStyles="mt-3"
-                        keyboardType='text'
+                        otherStyles="mt-3 flex-row"
+                        secureTextEntry={!showPassword}
+                        togglePasswordVisibility={togglePasswordVisibility}
+                        showPassword={showPassword}
                     />
 
                     <CustomButton
                         title="Login"
-                        handlePress={() => { router.push('/home') }}
+                        handlePress={handleLogin}
                         containerStyles="w-full mt-3"
                         textStyles='text-2xl'
                     />
