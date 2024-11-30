@@ -1,6 +1,8 @@
 const catchAsync = require('../utils/catchAsync');
 const regParser = require('../utils/regparser.js');
 const Automaton = require("../models/automatonModel.js"); 
+const graphviz = require("graphviz")
+
 
 exports.parseNFA = catchAsync(async (req, res) => {
   const {regEx} = req.body;
@@ -202,5 +204,36 @@ exports.fetchAllRegEx = catchAsync(async (req, res) => {
           message: 'Failed to fetch regex',
           error: error.message
       });
+  }
+});
+
+exports.sendSvgNFA = catchAsync(async (req, res) => {
+  const { regEx } = req.body;
+  if (!regEx) {
+    return res.status(400).send('Regular expression is required');
+  }
+
+  try {
+    const parser = new regParser.RegParser(regEx);
+    const fsm = parser.parseToNFA();
+    let dotScript = fsm.toDotScript();
+    console.log(dotScript);
+
+    graphviz.parse(dotScript, function(error, graph) {
+      if (error) {
+        return res.status(500).json({ error: 'Error generating graph: ' + error.message });
+      }
+
+      let svg = graph.toSvg();
+      console.log(svg); 
+
+      return res.json({
+        message: 'FSM visualized successfully',
+        svg: svg, 
+      });
+    });
+
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 });
