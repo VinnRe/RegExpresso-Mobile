@@ -1,7 +1,8 @@
 const catchAsync = require('../utils/catchAsync');
 const regParser = require('../utils/regparser.js');
-const Automaton = require("../models/automatonModel.js"); 
-const graphviz = require("graphviz")
+const Automaton = require("../models/automatonModel.js");
+const Viz = require('viz.js')
+const { Module, render } = require('viz.js/full.render.js');
 
 
 exports.parseNFA = catchAsync(async (req, res) => {
@@ -216,24 +217,21 @@ exports.sendSvgNFA = catchAsync(async (req, res) => {
   try {
     const parser = new regParser.RegParser(regEx);
     const fsm = parser.parseToNFA();
-    let dotScript = fsm.toDotScript();
+    const dotScript = fsm.toDotScript();
     console.log(dotScript);
 
-    graphviz.parse(dotScript, function(error, graph) {
-      if (error) {
-        return res.status(500).json({ error: 'Error generating graph: ' + error.message });
-      }
+    const viz = new Viz({ Module, render });
+    const svgContent = await viz.renderString(dotScript);
 
-      let svg = graph.toSvg();
-      console.log(svg); 
+    console.log(svgContent);
 
-      return res.json({
-        message: 'FSM visualized successfully',
-        svg: svg, 
-      });
+    return res.json({
+      message: 'FSM visualized successfully',
+      svg: svgContent,
     });
 
   } catch (error) {
+    console.error('Error:', error);
     return res.status(500).json({ error: error.message });
   }
 });
