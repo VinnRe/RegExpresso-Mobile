@@ -36,7 +36,7 @@ const RootLayout = () => {
         // }}
       />
       <Stack.Screen
-        name='test'
+        name='graph'
         // options={{
         //   headerShown: false
         // }}

@@ -9,7 +9,7 @@ const Home = () => {
             <Text>Home</Text>
             <CustomButton
                 title="GRAPH"
-                handlePress={() => { router.push('/test') }}
+                handlePress={() => { router.push('/graph') }}
                 containerStyles="w-full mt-3"
             />
         </View>
