@@ -44,7 +44,6 @@ const Login = () => {
                         title='Username'
                         value={form.username}
                         handleChangeText={(e) => {
-                            console.log("Username updated: ", e); // Debug log
                             setForm({ ...form, username: e });
                         }}
                         otherStyles="mt-7"
@@ -54,7 +53,6 @@ const Login = () => {
                         title='Password'
                         value={form.password}
                         handleChangeText={(e) => {
-                            console.log("Password updated: ", e); // Debug log
                             setForm({ ...form, password: e });
                         }}
                         otherStyles="mt-3 flex-row"
