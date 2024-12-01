@@ -9,7 +9,7 @@ const GraphComponent = ({ regEx }) => {
     const generateSvg = async (regEx) => {
       try {
         console.log(endpoints.svgNFA)
-        const response = await fetch("https://eight-camels-cut.loca.lt/api/parse/svgNFA", {
+        const response = await fetch(endpoints.svgNFA, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const GraphComponent = ({ regEx }) => {
   }, [regEx]);
 
   if (!svgContent) {
-    return null; // Optionally render a loading state
+    return null;
   }
 
   return (
