@@ -25,6 +25,8 @@ const Login = () => {
         }
     };
 
+    const [isSubmitting, setisSubmitting] = useState(false)
+
     return (
         <SafeAreaView className='bg-background-primary h-full'>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -53,6 +55,7 @@ const Login = () => {
                         handlePress={handleLogin}
                         containerStyles="w-full mt-3"
                         textStyles='text-2xl'
+                        isLoading={isSubmitting}
                     />
 
                     <FormFooter textValue="Don't have an account yet?" link='/signup' linkValue="Signup" />

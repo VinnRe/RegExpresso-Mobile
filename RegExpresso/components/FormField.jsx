@@ -32,7 +32,8 @@ const FormField = ({
                 <TouchableOpacity onPress={togglePasswordVisibility}>
                     <Image
                         source={!showPassword ? icons.eye : icons.eyeHide}
-                        className="w-10 h-10 absolute top-4 right-2"
+                        className="w-8 h-8 absolute top-5 right-2"
+                        resizeMode='contain'
                     />
                 </TouchableOpacity>
             )}
@@ -41,7 +42,8 @@ const FormField = ({
                 <TouchableOpacity onPress={togglePasswordVisibility}>
                     <Image
                         source={!showPassword ? icons.eye : icons.eyeHide}
-                        className="w-10 h-10 absolute top-4 right-2"
+                        className="w-8 h-8 absolute top-5 right-2"
+                        resizeMode='contain'
                     />
                 </TouchableOpacity>
             )}
