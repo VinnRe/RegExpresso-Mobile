@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
                 setUser(data.user);
                 // localStorage.setItem('token', data.token);
                 await SecureStore.setItemAsync("token", data.token)
+                console.log(await SecureStore.getItemAsync("token"))
                 return true;
             } else {
                 throw new Error(data.message);
@@ -41,21 +42,24 @@ export const AuthProvider = ({ children }) => {
                 body: JSON.stringify({ username, email, password }),
             });
 
-            const data = await response.json();
-            if (response.ok) {
-                setToken(data.token);
-                setUser(data.user);
-                // localStorage.setItem('token', data.token);
-                await SecureStore.setItemAsync("token", data.token)
-                return true;
-            } else {
-                throw new Error(data.message);
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error Response:', errorData);
+                throw new Error(errorData.message || 'Signup failed');
             }
+    
+            const data = await response.json();
+            console.log('Signup Response:', data);
+            setToken(data.token);
+            setUser(data.user);
+            await SecureStore.setItemAsync("token", data.token);
+            return true;
         } catch (error) {
             console.error('Signup Failed: ', error.message);
             return false;
         }
     };
+    
 
     const handleLogout = async () => {
         try {

@@ -6,6 +6,8 @@ import FormHeader from '../../components/FormHeader';
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import FormFooter from '../../components/FormFooter';
+import { useAuth } from '../context/AuthContext';
+import * as SecureStorage from 'expo-secure-store'
 
 const Signup = () => {
     const [form, setForm] = useState({
@@ -17,19 +19,39 @@ const Signup = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const { handleSignup } = useAuth();
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
     const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
 
+    const handleSubmit = async () => {
+        try {
+            if (form.password.length < 8) {
+                // SHOW THAT PASS MUST BE >= 8
+                console.log("Password must be greater or equal to 8");
+                return
+            }
 
-    const handleSignup = () => {
-        if (form.username && form.emai && form.password && form.confirmPassword) {
-            // Add login logic here (e.g., API call for authentication)
-            router.push('/home');
-        } else {
-            alert('Please fill in all fields');
+            if (form.password !== form.confirmPassword) {
+                console.log("Passwords must match")
+                return
+            } 
+
+            console.log(form.username, form.email, form.password)
+            console.log(await SecureStorage.getItemAsync('token'))
+            const isSuccess = await handleSignup(form.username, form.email, form.password)
+            if (isSuccess) {
+                router.push('/home');
+                console.log("success!")
+            } else {
+                alert('Error Signing Up!');
+                return
+            }
+
+        } catch (error) {
+            alert('An error occured please try again later.');
         }
-    };
+    }
 
     return (
         <SafeAreaView className='bg-background-primary h-full'>
@@ -74,7 +96,7 @@ const Signup = () => {
 
                     <CustomButton
                         title="Create account"
-                        handlePress={handleSignup}
+                        handlePress={handleSubmit}
                         containerStyles="w-full mt-3"
                         textStyles='text-2xl'
                     />
