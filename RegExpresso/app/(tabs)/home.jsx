@@ -1,20 +1,28 @@
 import { View, Text, FlatList } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useInputValidation } from "../../hooks/useInputValidation";
 import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import CustomDisplay from '../../components/CustomDisplay';
+import GraphComponent from '../../components/GraphComponent';
 
 const Home = () => {
     const { inputValue, hasError, handleInputChange } = useInputValidation();
+    const [regexValue, setRegexValue] = useState('');
+    
+    const click = () => {
+        console.log(inputValue)
+        setRegexValue(inputValue);
+    }
 
     return (
         <SafeAreaView className='bg-background-primary min-h-full 
         px-10 justify-center items-center'>
             <CustomDisplay
                 title="Finite State Automata"
+                regEx={regexValue}
             />
 
             <CustomInput
@@ -28,7 +36,7 @@ const Home = () => {
 
             <CustomButton
                 title="Convert DFA"
-                handlePress={() => { router.push('/home') }}
+                handlePress={() => { router.push('/home'); click(); }}
                 containerStyles="w-full mt-3"
             />
 
