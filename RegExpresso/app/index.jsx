@@ -12,13 +12,13 @@ import { images } from '../constants';
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 import { useInputValidation } from "../hooks/useInputValidation";
-import { AuthProvider } from "./context/AuthContext";
+// import { AuthProvider } from "./context/AuthContext";
 
 export default function App() {
   const { inputValue, hasError, handleInputChange } = useInputValidation();
 
   return (
-    <AuthProvider>
+    // <AuthProvider>
       <SafeAreaView className="bg-background-primary h-full">
         <ScrollView
           contentContainerStyle={{ flexGrow: 1 }}
@@ -92,6 +92,6 @@ export default function App() {
 
         <StatusBar style='light' />
       </SafeAreaView >
-    </AuthProvider>
+    // </AuthProvider>
   );
 }

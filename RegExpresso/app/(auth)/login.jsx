@@ -5,27 +5,34 @@ import FormHeader from '../../components/FormHeader';
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import FormFooter from '../../components/FormFooter';
+import { useAuth } from '../context/AuthContext';
+import { router } from 'expo-router';
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const [isSubmitting, setisSubmitting] = useState(false)
     const [form, setForm] = useState({
         username: '',
         password: ''
     })
-
-    const [showPassword, setShowPassword] = useState(false);
-
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
+    const { handleLogin } = useAuth();
 
-    const handleLogin = () => {
-        if (form.username && form.password) {
-            // Add login logic here (e.g., API call for authentication)
-            router.push('/home');
-        } else {
-            alert('Please fill in all fields');
+    const handleSubmit = async () => {
+        try {
+            const isSuccess = await handleLogin(form.username, form.password)
+
+            if (isSuccess) {
+                router.push('/home');
+                console.log("success!")
+            } else {
+                alert('Error Logging in!');
+            }
+        } catch (error) {
+            alert('An error occured please try again later.');
         }
-    };
+    }
 
-    const [isSubmitting, setisSubmitting] = useState(false)
 
     return (
         <SafeAreaView className='bg-background-primary h-full'>
@@ -36,14 +43,20 @@ const Login = () => {
                     <FormField
                         title='Username'
                         value={form.username}
-                        handleChangeText={(e) => setForm({ ...form, username: e })}
+                        handleChangeText={(e) => {
+                            console.log("Username updated: ", e); // Debug log
+                            setForm({ ...form, username: e });
+                        }}
                         otherStyles="mt-7"
                     />
 
                     <FormField
                         title='Password'
                         value={form.password}
-                        handleChangeText={(e) => setForm({ ...form, password: e })}
+                        handleChangeText={(e) => {
+                            console.log("Password updated: ", e); // Debug log
+                            setForm({ ...form, password: e });
+                        }}
                         otherStyles="mt-3 flex-row"
                         secureTextEntry={!showPassword}
                         togglePasswordVisibility={togglePasswordVisibility}
@@ -52,7 +65,7 @@ const Login = () => {
 
                     <CustomButton
                         title="Login"
-                        handlePress={handleLogin}
+                        handlePress={handleSubmit}
                         containerStyles="w-full mt-3"
                         textStyles='text-2xl'
                         isLoading={isSubmitting}

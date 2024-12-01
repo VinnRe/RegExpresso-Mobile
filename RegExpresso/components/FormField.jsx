@@ -20,8 +20,8 @@ const FormField = ({
         <View className={`space-y-2 ${otherStyles}`}>
             <CustomInput
                 label={title}
-                value={inputValue}
-                onChangeText={handleInputChange}
+                value={value}
+                onChangeText={handleChangeText}
                 hasError={hasError}
                 leftProperty='left-4'
                 secureTextEntry={secureTextEntry}
