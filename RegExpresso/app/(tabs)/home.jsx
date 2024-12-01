@@ -17,12 +17,6 @@ const Home = () => {
                 title="Finite State Automata"
             />
 
-            <CustomButton
-                title="GRAPH"
-                handlePress={() => { router.push('/test') }}
-                containerStyles="w-full mt-3"
-            />
-
             <CustomInput
                 label="Enter regular expression"
                 value={inputValue}
