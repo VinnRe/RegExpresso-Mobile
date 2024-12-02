@@ -7,14 +7,25 @@ import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import CustomDisplay from '../../components/CustomDisplay';
 import GraphComponent from '../../components/GraphComponent';
+import { useRegex } from '../context/RegexContext';
 
 const Home = () => {
     const { inputValue, hasError, handleInputChange } = useInputValidation();
-    const [regexValue, setRegexValue] = useState('');
+    const { regexValue, setRegexValue, fsmType, setFsmType } = useRegex();
     
     const click = () => {
         console.log(inputValue)
         setRegexValue(inputValue);
+    }
+
+    const handleNFASubmit = () => {
+        setRegexValue(inputValue);
+        setFsmType('NFA')
+    }
+    
+    const handleDFASubmit = () => {
+        setRegexValue(inputValue);
+        setFsmType('DFA')
     }
 
     return (
@@ -22,7 +33,8 @@ const Home = () => {
         px-10 justify-center items-center'>
             <CustomDisplay
                 title="Finite State Automata"
-                regEx={regexValue}
+                Component={GraphComponent}
+                componentProps={{ regEx: regexValue, type: fsmType }}
             />
 
             <CustomInput
@@ -36,13 +48,13 @@ const Home = () => {
 
             <CustomButton
                 title="Convert DFA"
-                handlePress={() => { router.push('/home'); click(); }}
+                handlePress={() => { router.push('/home'); handleDFASubmit(); }}
                 containerStyles="w-full mt-3"
             />
 
             <CustomButton
                 title="Convert NFA"
-                handlePress={() => { router.push('/home') }}
+                handlePress={() => { router.push('/home'); handleNFASubmit(); }}
                 containerStyles="w-full mt-3"
             />
         </SafeAreaView>
