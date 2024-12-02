@@ -1,64 +1,57 @@
-import { View, Text, FlatList } from 'react-native'
-import React, { useState } from 'react'
-import { router } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useInputValidation } from "../../hooks/useInputValidation";
-import CustomButton from '../../components/CustomButton'
-import CustomInput from '../../components/CustomInput'
+import { View, SafeAreaView } from 'react-native';
+import React from 'react';
+import { useRegex } from '../context/RegexContext';
+import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
 import CustomDisplay from '../../components/CustomDisplay';
 import GraphComponent from '../../components/GraphComponent';
-import { useRegex } from '../context/RegexContext';
+import useRegexOptions from '../../hooks/useRegexOptions';
+import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
-    const { inputValue, hasError, handleInputChange } = useInputValidation();
-    const { regexValue, setRegexValue, fsmType, setFsmType } = useRegex();
-    
-    const click = () => {
-        console.log(inputValue)
-        setRegexValue(inputValue);
-    }
+  const { regexValue, setRegexValue, fsmType, setFsmType } = useRegex();
+  const { saveRegex } = useRegexOptions();
+  const { token } = useAuth();
 
-    const handleNFASubmit = () => {
-        setRegexValue(inputValue);
-        setFsmType('NFA')
-    }
-    
-    const handleDFASubmit = () => {
-        setRegexValue(inputValue);
-        setFsmType('DFA')
-    }
+  const handleNFASubmit = () => {
+    setFsmType('NFA');
+    saveRegex(regexValue, token);
+  };
 
-    return (
-        <SafeAreaView className='bg-background-primary min-h-full 
-        px-10 justify-center items-center'>
-            <CustomDisplay
-                title="Finite State Automata"
-                Component={GraphComponent}
-                componentProps={{ regEx: regexValue, type: fsmType }}
-            />
+  const handleDFASubmit = () => {
+    setFsmType('DFA');
+    saveRegex(regexValue, token);
+  };
 
-            <CustomInput
-                label="Enter regular expression"
-                value={inputValue}
-                onChangeText={handleInputChange}
-                hasError={hasError}
-                leftProperty='left-24'
-                containerClass="mt-3"
-            />
+  return (
+    <SafeAreaView className="bg-background-primary min-h-full px-10 justify-center items-center">
+      <CustomDisplay
+        title="Finite State Automata"
+        Component={GraphComponent}
+        componentProps={{ regEx: regexValue, type: fsmType }}
+      />
 
-            <CustomButton
-                title="Convert DFA"
-                handlePress={() => { router.push('/home'); handleDFASubmit(); }}
-                containerStyles="w-full mt-3"
-            />
+      <CustomInput
+        label="Enter regular expression"
+        value={regexValue} // Bind to regexValue from context
+        onChangeText={(text) => setRegexValue(text)} // Update context
+        leftProperty="left-24"
+        containerClass="mt-3"
+      />
 
-            <CustomButton
-                title="Convert NFA"
-                handlePress={() => { router.push('/home'); handleNFASubmit(); }}
-                containerStyles="w-full mt-3"
-            />
-        </SafeAreaView>
-    )
-}
+      <CustomButton
+        title="Convert DFA"
+        handlePress={() => handleDFASubmit()}
+        containerStyles="w-full mt-3"
+      />
 
-export default Home
+      <CustomButton
+        title="Convert NFA"
+        handlePress={() => handleNFASubmit()}
+        containerStyles="w-full mt-3"
+      />
+    </SafeAreaView>
+  );
+};
+
+export default Home;

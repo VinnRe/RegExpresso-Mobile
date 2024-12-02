@@ -7,7 +7,6 @@ const useRegexOptions = () => {
                 method: "GET",
                 headers: { 
                     "Content-Type": "application/json",
-                    // HOW DO I GET AUTHORIZATION HERE?
                     "Authorization": `Bearer ${token}`
                 }
             })

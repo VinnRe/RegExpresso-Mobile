@@ -12,6 +12,7 @@ module.exports = {
 				button: {
 					text: "#f1e2d0",
 					bg: "#3e241380",
+					bgRed: "#8B0000",
 					hover: "#3d2413",
 				},
 				input: {
