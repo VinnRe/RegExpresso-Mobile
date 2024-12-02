@@ -36,7 +36,7 @@ const GraphComponent = ({ regEx }) => {
   }
 
   return (
-    <SvgXml xml={svgContent} width="100%" height="100%" style={{ backgroundColor: "#e8cdad" }}/>
+    <SvgXml xml={svgContent} width="100%" height="100%" />
   );
 };
 
