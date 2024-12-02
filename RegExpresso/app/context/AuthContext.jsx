@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
             console.log("Login Data: ", data);
             if (response.ok) {
                 setToken(data.token);
-                setUser(data.user);
+                setUser(data.data.username);
                 // localStorage.setItem('token', data.token);
                 await SecureStore.setItemAsync("token", data.token)
                 console.log(await SecureStore.getItemAsync("token"))
