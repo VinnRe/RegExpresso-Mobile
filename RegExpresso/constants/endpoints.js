@@ -14,4 +14,5 @@ export const endpoints = {
     saveRegex: `${url}/api/parse/save`,
     deleteRegex: `${url}/api/parse/delete/`,
     svgNFA: `${url}/api/parse/svgNFA`,
+    svgDFA: `${url}/api/parse/svgDFA`,
 } 

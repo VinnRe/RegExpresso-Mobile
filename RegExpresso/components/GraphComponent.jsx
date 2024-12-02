@@ -2,34 +2,63 @@ import React, { useEffect, useState } from 'react';
 import { SvgXml } from 'react-native-svg';
 import { endpoints } from '../constants/endpoints';
 
-const GraphComponent = ({ regEx }) => {
+const GraphComponent = ({ regEx, type }) => {
   const [svgContent, setSvgContent] = useState(null);
 
   useEffect(() => {
-    const generateSvg = async (regEx) => {
-      try {
-        if (await regEx) {
-            console.log("REGEX IN")
+    if (type === 'NFA') {
+      const generateSvg = async (regEx) => {
+        try {
+          if (await regEx) {
+              console.log("REGEX IN")
+          }
+          console.log(endpoints.svgNFA)
+          const response = await fetch(endpoints.svgNFA, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ regEx }),
+          });
+          const data = await response.json();
+          setSvgContent(data.svg);
+        } catch (error) {
+          console.error('Failed to fetch SVG:', error);
         }
-        console.log(endpoints.svgNFA)
-        const response = await fetch(endpoints.svgNFA, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ regEx }),
-        });
-        const data = await response.json();
-        setSvgContent(data.svg);
-      } catch (error) {
-        console.error('Failed to fetch SVG:', error);
+      };
+  
+      if (regEx) {
+        generateSvg(regEx);
       }
-    };
-
-    if (regEx) {
-      generateSvg(regEx);
+    } else if (type === 'DFA') {
+        const generateSvg = async (regEx) => {
+          try {
+            if (await regEx) {
+                console.log("REGEX IN")
+            }
+            console.log(endpoints.svgDFA)
+            const response = await fetch(endpoints.svgDFA, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ regEx }),
+            });
+            const data = await response.json();
+            setSvgContent(data.svg);
+          } catch (error) {
+            console.error('Failed to fetch SVG:', error);
+          }
+        };
+    
+        if (regEx) {
+          generateSvg(regEx);
+        }
+    } else {
+      return
     }
-  }, [regEx]);
+    
+  }, [regEx, type]);
 
   if (!svgContent) {
     return null;

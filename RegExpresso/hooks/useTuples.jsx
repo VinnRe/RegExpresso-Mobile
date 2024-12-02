@@ -1,73 +1,51 @@
 import { endpoints } from "../constants/endpoints";
 
-const useRegexOptions = () => {
-    const fetchRegex = async (token) => {
-        try {    
-            const response = await fetch(endpoints.fetchRegex, {
-                method: "GET",
-                headers: { 
-                    "Content-Type": "application/json",
-                    // HOW DO I GET AUTHORIZATION HERE?
-                    "Authorization": `Bearer ${token}`
-                }
+const useTuples = () => {
+    const getNFATuples = async (regex) => {
+        try {
+            const response = await fetch(endpoints.tuplesNFA, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    regEx: regex 
+                })
             })
 
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-
+    
             const data = await response.json()
+            console.log("Tuples Data: ", data)
             return data
         } catch (error) {
-            console.error("Failed to fetch regex:", error)
+            console.error("Error Receiving Tuples: ", error)
         }
     }
-
-    const saveRegex = async (regex, token) => {
-        try {
-            const response = await fetch(endpoints.saveRegex, {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({ regEx: regex })
-            });
     
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
-            }
-
-            console.log(response)
-
-        } catch (error) {
-            console.error("Failed to save regex:", error);
-            throw error;
-        }
-    };
-
-    const deleteRegex = async (regexId, token) => {
+    const getDFATuples = async (regex) => {
         try {
-            const response = await fetch(endpoints.deleteRegex + regexId, {
-                method: "DELETE",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                 },
+            const response = await fetch(endpoints.tuplesDFA, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    regEx: regex 
+                })
             })
 
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
-
+    
+            const data = await response.json()
+            console.log("Tuples Data: ", data)
+            return data
         } catch (error) {
-            console.error("Failed to delte regex: ", error)
-            throw error
+            console.error("Error Receiving Tuples: ", error)
         }
     }
-    
 
-    return { fetchRegex, saveRegex, deleteRegex }
+    return { getDFATuples, getNFATuples }
 }
 
-export default useRegexOptions
+export default useTuples
