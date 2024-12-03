@@ -32,13 +32,13 @@ const RootLayout = () => {
           <Stack.Screen name="index" options={screenOptions} />
           <Stack.Screen name="(auth)" options={screenOptions} />
           <Stack.Screen name="(tabs)" options={screenOptions} />
-          
+
           <Stack.Screen
             name='about'
-            // options={{
-              //   headerShown: false
-              // }}
-              />
+            options={{
+              headerShown: false
+            }}
+          />
         </Stack>
       </RegexProvider>
     </AuthProvider>

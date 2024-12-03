@@ -3,7 +3,7 @@ import React from 'react'
 
 const HistoryNotLogged = () => {
   return (
-      <Text>You need to be Logged in to view History</Text>
+    <Text className='font-poppinsMedium text-lg text-text'>Login first to view history</Text>
   )
 }
 

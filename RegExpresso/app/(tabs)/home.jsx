@@ -43,7 +43,7 @@ const Home = () => {
             label="Enter regular expression"
             value={regexValue} // Bind to regexValue from context
             onChangeText={(text) => setRegexValue(text)} // Update context
-            leftProperty="left-24"
+            alignPlaceholder='items-center'
             containerClass="mt-3"
           />
 

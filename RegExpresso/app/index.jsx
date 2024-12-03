@@ -10,7 +10,6 @@ import { Redirect, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from '../constants';
 import CustomButton from "../components/CustomButton";
-import CustomInput from "../components/CustomInput";
 import { useInputValidation } from "../hooks/useInputValidation";
 // import { AuthProvider } from "./context/AuthContext";
 
@@ -60,33 +59,24 @@ export default function App() {
             automata.
           </Text>
 
-          <CustomInput
-            label="Enter regular expression"
-            value={inputValue}
-            onChangeText={handleInputChange}
-            hasError={hasError}
-            leftProperty='left-24'
-            containerClass="mt-5"
-          />
-
           <CustomButton
-            title="Convert DFA"
+            title="Start Converting"
             handlePress={() => { router.push('/home') }}
             containerStyles="w-full mt-3"
           />
 
-          <CustomButton
-            title="Convert NFA"
-            handlePress={() => { router.push('/home') }}
-            containerStyles="w-full mt-3"
-          />
-
-          {/* Test Login */}
           <CustomButton
             title="Login"
             handlePress={() => { router.push('/login') }}
             containerStyles="w-full mt-3"
           />
+
+          <CustomButton
+            title="Signup"
+            handlePress={() => { router.push('/signup') }}
+            containerStyles="w-full mt-3"
+          />
+
         </View>
       </ScrollView>
 

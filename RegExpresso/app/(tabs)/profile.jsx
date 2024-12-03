@@ -17,17 +17,22 @@ const Profile = () => {
         contentContainerStyle={{ flexGrow: 1 }}
       >
         <View className=" w-full h-full items-center justify-center px-10 ">
-          {!token ? <Text>
-            Not Logged In
-          </Text> : <Text>
-            {user}
-          </Text>
+          {!token ?
+            <Text className='font-poppinsBold text-4xl text-text'>
+              Not logged in yet
+            </Text> :
+            <Text className='font-poppinsBold text-4xl text-text'>
+              Hello there,&nbsp;
+              {user}
+            </Text>
           }
+
           <CustomButton
-            title="About Page"
+            title="More about us"
             handlePress={() => { router.push('/about') }}
             containerStyles="w-full mt-3"
           />
+
           {!token ?
             <CustomButton
               title="Login"

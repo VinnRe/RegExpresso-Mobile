@@ -3,7 +3,7 @@ import { View, Text, FlatList } from 'react-native';
 
 const CustomTable = ({ tuples }) => {
   if (!tuples) {
-    return <Text>Loading tuples...</Text>; // Or handle error if tuples is undefined
+    return <Text className='font-poppinsMedium text-lg text-text'>Enter a regular expression first</Text>; // Or handle error if tuples is undefined
   }
 
   // Create a flat data array with section identifiers
