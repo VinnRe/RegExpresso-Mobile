@@ -1,4 +1,4 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
 import { router } from 'expo-router';
@@ -12,31 +12,36 @@ const Profile = () => {
   console.log(user)
 
   return (
-    <SafeAreaView className='bg-background-primary min-h-full px-10 justify-center items-center'>
-      {!token ? <Text>
+    <SafeAreaView className='bg-background-primary min-h-full'>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <View className=" w-full h-full items-center justify-center px-10 ">
+          {!token ? <Text>
             Not Logged In
-        </Text> : <Text>
+          </Text> : <Text>
             {user}
-        </Text>
-      }
-      <CustomButton
-        title="About Page"
-        handlePress={() => { router.push('/about') }}
-        containerStyles="w-full mt-3"
-      />
-      {!token ? 
+          </Text>
+          }
           <CustomButton
-            title="Login"
-            handlePress={() => { router.push('/login') }}
+            title="About Page"
+            handlePress={() => { router.push('/about') }}
             containerStyles="w-full mt-3"
-          /> :
-          <CustomDeleteButton
+          />
+          {!token ?
+            <CustomButton
+              title="Login"
+              handlePress={() => { router.push('/login') }}
+              containerStyles="w-full mt-3"
+            /> :
+            <CustomDeleteButton
               title="Logout"
               handlePress={() => { handleLogout(); router.push('/login'); }}
               containerStyles="w-full mt-3"
-          />
-      }
-      
+            />
+          }
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

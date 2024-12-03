@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import useRegexOptions from '../hooks/useRegexOptions';
 import { useRegex } from '../app/context/RegexContext';
 import CustomButton from './CustomButton';
@@ -48,7 +48,7 @@ const HistoryComponent = ({ token }) => {
   );
 
   const renderItem = ({ item }) => (
-    <View style={styles.itemContainer}>
+    <View className="px-4 flex-row gap-2">
       <CustomButton
         title={item.regEx}
         handlePress={() => {
@@ -56,49 +56,33 @@ const HistoryComponent = ({ token }) => {
           handleDFASubmit(item.regEx);
           router.push('/home');
         }}
-        containerStyles="w-full mt-3"
+        containerStyles="w-3/4 bg-accent p-2 rounded-md"
+        textStyle="font-poppinsMedium text-white text-lg"
       />
       <CustomDeleteButton
         title="Delete"
         handlePress={() => handleDelete(item._id)} // Call handleDelete on button press
+        containerStyles="w-1/4 bg-danger p-2 rounded-md"
+        textStyle="font-poppinsBold text-white text-sm"
       />
     </View>
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>RegEx History</Text>
+    <>
       {allRegex.length === 0 ? (
-        <Text>No RegEx available.</Text>
+        <Text className="font-poppinsMedium text-lg text-text">No RegEx available.</Text>
       ) : (
         <FlatList
           data={allRegex}
           renderItem={renderItem}
           keyExtractor={(item) => item._id}
+          contentContainerStyle={{ padding: 10, gap: 10 }}
+          className="w-full"
         />
       )}
-    </View>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  itemContainer: {
-    padding: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-  },
-});
 
 export default HistoryComponent;

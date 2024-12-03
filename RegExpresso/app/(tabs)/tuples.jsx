@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CustomDisplay from '../../components/CustomDisplay'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,7 +9,7 @@ import useTuples from '../../hooks/useTuples';
 const Tuples = () => {
     const { regexValue, fsmType } = useRegex();
     const { getDFATuples, getNFATuples } = useTuples();
-    const [ tuplesData, setTuplesData ] = useState([]);
+    const [tuplesData, setTuplesData] = useState([]);
 
     useEffect(() => {
         // Fetch tuples data based on FSM type
@@ -30,14 +30,15 @@ const Tuples = () => {
             getTuples();
         }
     }, [regexValue, fsmType]);  // Re-run the effect when regexValue or fsmType changes
-    
+
     return (
-        <SafeAreaView className='bg-background-primary min-h-full px-10 justify-center items-center'>
-            <CustomDisplay
-                title="5 Tuples"
-                Component={CustomTable}
-                componentProps={{ tuples: tuplesData }}
-            />
+        <SafeAreaView className='bg-background-primary min-h-full'>
+            <View className='w-full h-full items-center justify-center p-10'>
+                <Text className='font-poppinsBold text-4xl text-text'>
+                    The 5 Tuples
+                </Text>
+                <CustomTable tuples={tuplesData} />
+            </View>
         </SafeAreaView>
     )
 }

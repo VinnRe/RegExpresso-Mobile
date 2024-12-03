@@ -5,7 +5,10 @@ import { icons } from '../../constants'
 
 const TabIcon = ({ icon, color, name, focused }) => {
     return (
-        <View className='items-center justify-center gap-2'>
+        <View
+            className='items-center justify-center gap-1'
+            style={{ minWidth: 50 }}
+        >
             <Image
                 source={icon}
                 resizeMode='contain'
@@ -13,8 +16,14 @@ const TabIcon = ({ icon, color, name, focused }) => {
                 className='w-6 h-6'
             />
 
-            <Text className={`${focused ? 'font-poppinsMedium' :
-                'font-poppinsRegular'} text-xs`} style={{ color: color }}>
+            <Text
+                className=
+                {`${focused ?
+                    'font-poppinsMedium' :
+                    'font-poppinsRegular'} text-xs`}
+                style={{ color: color }}
+                numberOfLines={1}
+                ellipsizeMode='tail'>
                 {name}
             </Text>
         </View >
@@ -31,9 +40,7 @@ const TabsLayout = () => {
                     tabBarInactiveTintColor: '#3e241380',
                     tabBarStyle: {
                         backgroundColor: "#e8cdad",
-                        height: 50,
                         borderTopWidth: 0,
-                        paddingTop: 8
                     }
                 }}
             >

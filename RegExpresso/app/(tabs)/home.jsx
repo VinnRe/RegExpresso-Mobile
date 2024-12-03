@@ -1,4 +1,5 @@
-import { View, SafeAreaView } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
 import React from 'react';
 import { useRegex } from '../context/RegexContext';
 import CustomInput from '../../components/CustomInput';
@@ -24,32 +25,41 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView className="bg-background-primary min-h-full px-10 justify-center items-center">
-      <CustomDisplay
-        title="Finite State Automata"
-        Component={GraphComponent}
-        componentProps={{ regEx: regexValue, type: fsmType }}
-      />
+    <SafeAreaView className="bg-background-primary min-h-full">
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <View className='w-full h-full items-center justify-center px-10'>
+          <Text className='font-poppinsBold text-3xl text-text'>
+            Finite State Automata
+          </Text>
 
-      <CustomInput
-        label="Enter regular expression"
-        value={regexValue} // Bind to regexValue from context
-        onChangeText={(text) => setRegexValue(text)} // Update context
-        leftProperty="left-24"
-        containerClass="mt-3"
-      />
+          <CustomDisplay
+            Component={GraphComponent}
+            componentProps={{ regEx: regexValue, type: fsmType }}
+          />
 
-      <CustomButton
-        title="Convert DFA"
-        handlePress={() => handleDFASubmit()}
-        containerStyles="w-full mt-3"
-      />
+          <CustomInput
+            label="Enter regular expression"
+            value={regexValue} // Bind to regexValue from context
+            onChangeText={(text) => setRegexValue(text)} // Update context
+            leftProperty="left-24"
+            containerClass="mt-3"
+          />
 
-      <CustomButton
-        title="Convert NFA"
-        handlePress={() => handleNFASubmit()}
-        containerStyles="w-full mt-3"
-      />
+          <CustomButton
+            title="Convert DFA"
+            handlePress={() => handleDFASubmit()}
+            containerStyles="w-full mt-3"
+          />
+
+          <CustomButton
+            title="Convert NFA"
+            handlePress={() => handleNFASubmit()}
+            containerStyles="w-full mt-3"
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -10,7 +10,7 @@ const GraphComponent = ({ regEx, type }) => {
       const generateSvg = async (regEx) => {
         try {
           if (await regEx) {
-              console.log("REGEX IN")
+            console.log("REGEX IN")
           }
           console.log(endpoints.svgNFA)
           const response = await fetch(endpoints.svgNFA, {
@@ -26,38 +26,38 @@ const GraphComponent = ({ regEx, type }) => {
           console.error('Failed to fetch SVG:', error);
         }
       };
-  
+
       if (regEx) {
         generateSvg(regEx);
       }
     } else if (type === 'DFA') {
-        const generateSvg = async (regEx) => {
-          try {
-            if (await regEx) {
-                console.log("REGEX IN")
-            }
-            console.log(endpoints.svgDFA)
-            const response = await fetch(endpoints.svgDFA, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ regEx }),
-            });
-            const data = await response.json();
-            setSvgContent(data.svg);
-          } catch (error) {
-            console.error('Failed to fetch SVG:', error);
+      const generateSvg = async (regEx) => {
+        try {
+          if (await regEx) {
+            console.log("REGEX IN")
           }
-        };
-    
-        if (regEx) {
-          generateSvg(regEx);
+          console.log(endpoints.svgDFA)
+          const response = await fetch(endpoints.svgDFA, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ regEx }),
+          });
+          const data = await response.json();
+          setSvgContent(data.svg);
+        } catch (error) {
+          console.error('Failed to fetch SVG:', error);
         }
+      };
+
+      if (regEx) {
+        generateSvg(regEx);
+      }
     } else {
       return
     }
-    
+
   }, [regEx, type]);
 
   if (!svgContent) {
@@ -65,7 +65,7 @@ const GraphComponent = ({ regEx, type }) => {
   }
 
   return (
-    <SvgXml xml={svgContent} width="100%" height="100%" />
+    <SvgXml xml={svgContent} width="100%" height="100%" style={{ marginLeft: -40, zIndex: -1 }} />
   );
 };
 
