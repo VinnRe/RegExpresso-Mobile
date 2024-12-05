@@ -1,6 +1,6 @@
 import { Text, View, ScrollView } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from 'react';
+import React, { useState } from 'react';
 import { useRegex } from '../context/RegexContext';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -11,17 +11,19 @@ import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
   const { regexValue, setRegexValue, fsmType, setFsmType } = useRegex();
-  const { saveRegex } = useRegexOptions();
+  const { saveRegex, errorMessageSave, setErrorMessageSave } = useRegexOptions();
   const { token } = useAuth();
 
   const handleNFASubmit = () => {
     setFsmType('NFA');
     saveRegex(regexValue, token);
+    setErrorMessageSave("");
   };
-
+  
   const handleDFASubmit = () => {
     setFsmType('DFA');
     saveRegex(regexValue, token);
+    setErrorMessageSave("");
   };
 
   return (
@@ -39,10 +41,16 @@ const Home = () => {
             componentProps={{ regEx: regexValue, type: fsmType }}
           />
 
+          {errorMessageSave ? (
+            <Text className='text-text-error font-poppinsRegular text-l mt-3'>
+                {errorMessageSave}
+            </Text>
+          ) : null}
+
           <CustomInput
             label="Enter regular expression"
-            value={regexValue} // Bind to regexValue from context
-            onChangeText={(text) => setRegexValue(text)} // Update context
+            value={regexValue}
+            onChangeText={(text) => setRegexValue(text)}
             alignPlaceholder='items-center'
             containerClass="mt-3"
           />

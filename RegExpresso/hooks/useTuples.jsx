@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { endpoints } from "../constants/endpoints";
 
 const useTuples = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+
     const getNFATuples = async (regex) => {
         try {
             const response = await fetch(endpoints.tuplesNFA, {
@@ -10,16 +13,16 @@ const useTuples = () => {
                     regEx: regex 
                 })
             })
-
+            
             if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
+                setErrorMessage("Error Fetching the Tuples!");
             }
-    
+            
             const data = await response.json()
-            console.log("Tuples Data: ", data)
+            setErrorMessage("");
             return data
         } catch (error) {
-            console.error("Error Receiving Tuples: ", error)
+            setErrorMessage("Error Receiving Tuples!");
         }
     }
     
@@ -32,20 +35,20 @@ const useTuples = () => {
                     regEx: regex 
                 })
             })
-
+            
             if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
+                setErrorMessage("Error Fetching the Tuples!");
             }
-    
+            
             const data = await response.json()
-            console.log("Tuples Data: ", data)
+            setErrorMessage("");
             return data
         } catch (error) {
-            console.error("Error Receiving Tuples: ", error)
+            setErrorMessage("Error Receiving Tuples!");
         }
     }
 
-    return { getDFATuples, getNFATuples }
+    return { getDFATuples, getNFATuples, errorMessage, setErrorMessage }
 }
 
 export default useTuples

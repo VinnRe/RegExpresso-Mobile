@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { endpoints } from "../constants/endpoints";
 
 const useRegexOptions = () => {
+    const [errorMessageFetch, setErrorMessageFetch] = useState("");
+    const [errorMessageSave, setErrorMessageSave] = useState("");
+    const [errorMessageDelete, setErrorMessageDelete] = useState("");
+
     const fetchRegex = async (token) => {
         try {    
             const response = await fetch(endpoints.fetchRegex, {
@@ -10,20 +15,25 @@ const useRegexOptions = () => {
                     "Authorization": `Bearer ${token}`
                 }
             })
+            setErrorMessageFetch("")
 
             if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
+                // throw new Error(`Error: ${response.status}`);
+                setErrorMessageFetch("Oh no! Error fetching the regular expressions")
             }
-
+            
             const data = await response.json()
             return data
         } catch (error) {
-            console.error("Failed to fetch regex:", error)
+            // console.error("Failed to fetch regex:", error)
+            setErrorMessageFetch("Oh no! Error fetching the regular expressions")
         }
     }
 
     const saveRegex = async (regex, token) => {
         try {
+            if (!token) return;
+            
             const response = await fetch(endpoints.saveRegex, {
                 method: "POST",
                 headers: { 
@@ -32,12 +42,11 @@ const useRegexOptions = () => {
                 },
                 body: JSON.stringify({ regEx: regex })
             });
+            setErrorMessageSave("")
     
             if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
+                setErrorMessageSave("Regular expression couldn't be visualized")
             }
-
-            console.log(response)
 
         } catch (error) {
             console.error("Failed to save regex:", error);
@@ -54,19 +63,22 @@ const useRegexOptions = () => {
                     "Authorization": `Bearer ${token}`
                  },
             })
+            setErrorMessageDelete("")
 
             if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
+                setErrorMessageDelete("Oh no! Error deleting the regex.")
+                // throw new Error(`Error: ${response.status}`);
             }
-
+            
         } catch (error) {
-            console.error("Failed to delte regex: ", error)
-            throw error
+            setErrorMessageDelete("Oh no! Failed to delete the regex.")
+            // console.error("Failed to delte regex: ", error)
+            // throw error
         }
     }
     
 
-    return { fetchRegex, saveRegex, deleteRegex }
+    return { fetchRegex, saveRegex, deleteRegex, errorMessageFetch, errorMessageSave, errorMessageDelete, setErrorMessageSave, setErrorMessageDelete, setErrorMessageFetch }
 }
 
 export default useRegexOptions

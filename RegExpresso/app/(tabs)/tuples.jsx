@@ -8,28 +8,30 @@ import useTuples from '../../hooks/useTuples';
 
 const Tuples = () => {
     const { regexValue, fsmType } = useRegex();
-    const { getDFATuples, getNFATuples } = useTuples();
+    const { getDFATuples, getNFATuples, errorMessage, setErrorMessage } = useTuples();
     const [tuplesData, setTuplesData] = useState([]);
 
     useEffect(() => {
-        // Fetch tuples data based on FSM type
-        const getTuples = async () => {
-            let tupleGroup;
-            if (fsmType === 'NFA') {
-                const tuples = await getNFATuples(regexValue);  // Fetch NFA tuples
-                tupleGroup = tuples.tuples;  // Store the tuples data
-            } else if (fsmType === 'DFA') {
-                const tuples = await getDFATuples(regexValue);  // Fetch DFA tuples
-                tupleGroup = tuples.tuples;  // Store the tuples data
+        try {
+            const getTuples = async () => {
+                let tupleGroup;
+                if (fsmType === 'NFA') {
+                    const tuples = await getNFATuples(regexValue);
+                    tupleGroup = tuples.tuples;
+                } else if (fsmType === 'DFA') {
+                    const tuples = await getDFATuples(regexValue);
+                    tupleGroup = tuples.tuples;
+                }
+                setTuplesData(tupleGroup);
             }
-            setTuplesData(tupleGroup);  // Update the state with fetched tuples data
-            console.log("TUPLESPLES: ", tuplesData)
-        };
-
-        if (regexValue) {  // Make sure regexValue is available before fetching
-            getTuples();
+    
+            if (regexValue) {
+                getTuples();
+            }
+        } catch (error) {
+            setErrorMessage("Error Fetching Tuples!")
         }
-    }, [regexValue, fsmType]);  // Re-run the effect when regexValue or fsmType changes
+    }, [regexValue, fsmType]);
 
     return (
         <SafeAreaView className='bg-background-primary min-h-full'>
@@ -37,6 +39,11 @@ const Tuples = () => {
                 <Text className='font-poppinsBold text-4xl text-text'>
                     The 5 Tuples
                 </Text>
+                {errorMessage ? (
+                    <Text className='text-text-error font-poppinsRegular text-l mt-3'>
+                        {errorMessage}
+                    </Text>
+                ) : null }
                 <CustomTable tuples={tuplesData} />
             </View>
         </SafeAreaView>
