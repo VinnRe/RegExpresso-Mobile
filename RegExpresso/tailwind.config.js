@@ -8,6 +8,7 @@ module.exports = {
 				text: {
 					DEFAULT: "#3d2413",
 					hover: "#f1e2d0",
+					error: "#820000",
 				},
 				button: {
 					text: "#f1e2d0",
