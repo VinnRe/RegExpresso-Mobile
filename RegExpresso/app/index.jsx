@@ -11,13 +11,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from '../constants';
 import CustomButton from "../components/CustomButton";
 import { useInputValidation } from "../hooks/useInputValidation";
-// import { AuthProvider } from "./context/AuthContext";
+import { useAuth } from "./context/AuthContext";
 
 export default function App() {
-  const { inputValue, hasError, handleInputChange } = useInputValidation();
+
+  const { token, user } = useAuth();
 
   return (
-    // <AuthProvider>
     <SafeAreaView className="bg-background-primary min-h-full">
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
@@ -59,29 +59,45 @@ export default function App() {
             automata.
           </Text>
 
+          {!token ? null : (
+            <Text
+              className="text-text 
+                font-poppinsBold
+                text-xl mt-5 mb-5"
+            >
+              Welcome back, {user}
+            </Text>
+
+            
+          )}
+
           <CustomButton
             title="Start Converting"
             handlePress={() => { router.push('/home') }}
             containerStyles="w-full mt-3"
           />
 
-          <CustomButton
-            title="Login"
-            handlePress={() => { router.push('/login') }}
-            containerStyles="w-full mt-3"
-          />
+          { !token ? (
+              <>
+                <CustomButton
+                  title="Login"
+                  handlePress={() => { router.push('/login') }}
+                  containerStyles="w-full mt-3"
+                />
+      
+                <CustomButton
+                  title="Signup"
+                  handlePress={() => { router.push('/signup') }}
+                  containerStyles="w-full mt-3"
+                />
+              </>
+          ) : null }
 
-          <CustomButton
-            title="Signup"
-            handlePress={() => { router.push('/signup') }}
-            containerStyles="w-full mt-3"
-          />
 
         </View>
       </ScrollView>
 
       <StatusBar style='light' />
     </SafeAreaView >
-    // </AuthProvider>
   );
 }
