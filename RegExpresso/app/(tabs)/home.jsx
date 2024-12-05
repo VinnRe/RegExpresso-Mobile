@@ -1,6 +1,6 @@
 import { Text, View, ScrollView } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRegex } from '../../context/RegexContext';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -17,13 +17,11 @@ const Home = () => {
   const handleNFASubmit = () => {
     setFsmType('NFA');
     saveRegex(regexValue, token);
-    setErrorMessageSave("");
   };
 
   const handleDFASubmit = () => {
     setFsmType('DFA');
     saveRegex(regexValue, token);
-    setErrorMessageSave("");
   };
 
   return (
@@ -45,7 +43,11 @@ const Home = () => {
             <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
               {errorMessageSave}
             </Text>
-          ) : null}
+          ) : (
+            <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
+              
+            </Text>
+          )}
 
           <CustomInput
             label="Enter regular expression"

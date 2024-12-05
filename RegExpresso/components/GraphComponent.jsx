@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { SvgXml } from 'react-native-svg';
 import { endpoints } from '../constants/endpoints';
+import useRegexOptions from '../hooks/useRegexOptions';
 
 const GraphComponent = ({ regEx, type }) => {
   const [svgContent, setSvgContent] = useState(null);
+  const { errorMessageSave, setErrorMessageSave } = useRegexOptions();
+
 
   useEffect(() => {
     if (type === 'NFA') {

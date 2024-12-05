@@ -42,10 +42,9 @@ const useRegexOptions = () => {
                 },
                 body: JSON.stringify({ regEx: regex })
             });
-            setErrorMessageSave("")
     
             if (!response.ok) {
-                setErrorMessageSave("Regular expression couldn't be visualized")
+                // console.error("Failed to save regex:", response.status);
             }
 
         } catch (error) {

@@ -59,7 +59,7 @@ const HistoryComponent = ({ token }) => {
         textStyle="font-poppinsMedium text-white text-lg"
       />
       <CustomButton
-        title="Delete"
+        title="X"
         handlePress={() => handleDelete(item._id)} // Call handleDelete on button press
         containerStyles="w-1/4 bg-danger p-2 rounded-md bg-button-bgRed"
         textStyle="font-poppinsBold text-white text-sm"
