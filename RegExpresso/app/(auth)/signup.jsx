@@ -1,4 +1,4 @@
-import { View, ScrollView } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from "expo-router";
@@ -19,6 +19,7 @@ const Signup = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [isErrorMessage, setIsErrorMessage] = useState("");
     const { handleSignup } = useAuth();
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
@@ -26,30 +27,31 @@ const Signup = () => {
 
     const handleSubmit = async () => {
         try {
+            if (!form.username || !form.email || !form.password || !form.confirmPassword) {
+                setIsErrorMessage("Please fill up all the fields!")
+            }
+            
             if (form.password.length < 8) {
-                // SHOW THAT PASS MUST BE >= 8
-                console.log("Password must be greater or equal to 8");
+                setIsErrorMessage("Password must be greater than or equal to 8.")
                 return
             }
-
+            
             if (form.password !== form.confirmPassword) {
-                console.log("Passwords must match")
+                setIsErrorMessage("Passwords do not match!")
                 return
             } 
-
-            console.log(form.username, form.email, form.password)
-            console.log(await SecureStorage.getItemAsync('token'))
+            
             const isSuccess = await handleSignup(form.username, form.email, form.password)
             if (isSuccess) {
                 router.push('/home');
-                console.log("success!")
+                setIsErrorMessage("")
             } else {
-                alert('Error Signing Up!');
+                setIsErrorMessage("Please fill up all the fields!")
                 return
             }
-
+            
         } catch (error) {
-            alert('An error occured please try again later.');
+            setIsErrorMessage("Oh no! An error occured please try again later.")
         }
     }
 
@@ -93,6 +95,12 @@ const Signup = () => {
                         togglePasswordVisibility={toggleConfirmPasswordVisibility}
                         showPassword={showConfirmPassword}
                     />
+
+                    {isErrorMessage ? (
+                        <Text className='text-text-error text-center font-poppinsRegular text-l mt-3'>
+                            {isErrorMessage}
+                        </Text>
+                    ) : null}
 
                     <CustomButton
                         title="Create account"

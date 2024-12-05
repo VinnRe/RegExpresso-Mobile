@@ -1,4 +1,4 @@
-import { View, ScrollView } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormHeader from '../../components/FormHeader';
@@ -10,7 +10,9 @@ import { router } from 'expo-router';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [isSubmitting, setisSubmitting] = useState(false)
+    const [isSubmitting, setisSubmitting] = useState(false);
+    const [isWrongCreds, setIsWrongCreds] = useState(false);
+    const [isServerError, setIsServerError] = useState(false);
     const [form, setForm] = useState({
         username: '',
         password: ''
@@ -24,12 +26,12 @@ const Login = () => {
 
             if (isSuccess) {
                 router.push('/home');
-                console.log("success!")
+                setIsWrongCreds(false)
             } else {
-                alert('Error Logging in!');
+                setIsWrongCreds(true)
             }
         } catch (error) {
-            alert('An error occured please try again later.');
+            setIsServerError(true)
         }
     }
 
@@ -45,6 +47,7 @@ const Login = () => {
                         value={form.username}
                         handleChangeText={(e) => {
                             setForm({ ...form, username: e });
+                            setIsServerError(false)
                         }}
                         otherStyles="mt-7"
                     />
@@ -54,12 +57,29 @@ const Login = () => {
                         value={form.password}
                         handleChangeText={(e) => {
                             setForm({ ...form, password: e });
+                            setIsServerError(false);
                         }}
                         otherStyles="mt-3 flex-row"
                         secureTextEntry={!showPassword}
                         togglePasswordVisibility={togglePasswordVisibility}
                         showPassword={showPassword}
                     />
+
+                    {isWrongCreds ? (
+                        <>
+                            <Text className='text-text-error font-poppinsRegular text-l mt-3'>
+                                Incorrect credentials! Please try again.
+                            </Text>
+                        </>
+                    ) : null}
+                    
+                    {isServerError ? (
+                        <>
+                            <Text className='text-text-error font-poppinsRegular text-l mt-3'>
+                                Oh no! An error occured please try again later.
+                            </Text>
+                        </>
+                    ) : null}
 
                     <CustomButton
                         title="Login"
@@ -69,7 +89,7 @@ const Login = () => {
                         isLoading={isSubmitting}
                     />
 
-                    <FormFooter textValue="Don't have an account yet?" link='/signup' linkValue="Signup" />
+                    <FormFooter  textValue="Don't have an account yet?" link='/signup' linkValue="Signup" />
 
                 </View>
             </ScrollView>

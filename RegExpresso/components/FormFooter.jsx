@@ -8,7 +8,7 @@ import CustomButton from './CustomButton'
 const FormFooter = ({ textValue, link, linkValue }) => {
     return (
         <View className='relative w-full items-center justify-center'>
-            <Text className='text-text font-poppinsRegular text-xl mt-3 relative z-10'>
+            <Text className='text-text text-center font-poppinsRegular text-xl mt-3 relative z-10'>
                 {textValue}&nbsp;
                 <Link href={link} className='text-text font-poppinsMedium text-lg'>
                     {linkValue}
