@@ -28,9 +28,9 @@ module.exports = {
 				white: "#f5f2f0",
 			},
 			fontFamily: {
-				poppinsBold: ["Poppins Bold", "sans-serif"],
-				poppinsMedium: ["Poppins Medium", "sans-serif"],
-				poppinsRegular: ["Poppins Regular", "sans-serif"],
+				poppinsBold: ["Poppins-Bold", "sans-serif"],
+				poppinsMedium: ["Poppins-Medium", "sans-serif"],
+				poppinsRegular: ["Poppins-Regular", "sans-serif"],
 			},
 		},
 	},
