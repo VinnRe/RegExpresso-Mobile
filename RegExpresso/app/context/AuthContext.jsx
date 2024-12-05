@@ -8,6 +8,13 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(SecureStore.getItem("token") || null);
 
+    useEffect(() => {
+        if (!token) return;
+        
+        const userName = getUserData(token)
+        setUser(userName)
+    }, [token])
+
     const handleLogin = async (username, password) => {
         try {
             const response = await fetch(endpoints.login, {
