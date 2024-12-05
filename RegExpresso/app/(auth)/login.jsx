@@ -1,11 +1,11 @@
-import { Text, View, ScrollView } from 'react-native'
-import React, { useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Text, View, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import FormHeader from '../../components/FormHeader';
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import FormFooter from '../../components/FormFooter';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { router } from 'expo-router';
 
 const Login = () => {
@@ -40,7 +40,9 @@ const Login = () => {
         <SafeAreaView className='bg-background-primary h-full'>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View className=" w-full h-full items-center justify-center px-10 mt-[-40px]">
-                    <FormHeader title='Login' />
+                    <FormHeader
+                        title='Login'
+                        textStyles='text-6xl' />
 
                     <FormField
                         title='Username'
@@ -72,7 +74,7 @@ const Login = () => {
                             </Text>
                         </>
                     ) : null}
-                    
+
                     {isServerError ? (
                         <>
                             <Text className='text-text-error font-poppinsRegular text-l mt-3'>
@@ -89,7 +91,7 @@ const Login = () => {
                         isLoading={isSubmitting}
                     />
 
-                    <FormFooter  textValue="Don't have an account yet?" link='/signup' linkValue="Signup" />
+                    <FormFooter textValue="Don't have an account yet?" link='/signup' linkValue="Signup" />
 
                 </View>
             </ScrollView>

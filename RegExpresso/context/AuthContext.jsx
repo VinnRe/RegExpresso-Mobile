@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { endpoints } from "../../constants/endpoints";
+import { endpoints } from "../constants/endpoints";
 import * as SecureStore from 'expo-secure-store'
 
 const AuthContext = createContext();
@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (!token) return;
-        
+
         const userName = getUserData(token)
         setUser(userName)
     }, [token])
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
                 console.error('Error Response:', errorData);
                 throw new Error(errorData.message || 'Signup failed');
             }
-    
+
             const data = await response.json();
             console.log('Signup Response:', data);
             setToken(data.token);
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
             return false;
         }
     };
-    
+
 
     const handleLogout = async () => {
         try {

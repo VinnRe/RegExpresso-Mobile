@@ -13,7 +13,7 @@ const About = () => {
         resizeMode="cover"
         className="flex-1 items-center p-4"
       >
-        <TouchableOpacity className="absolute top-5 left-2" onPress={() => router.push('/profile')}>
+        <TouchableOpacity className="absolute top-5 left-2" onPress={() => router.back()}>
           <Image
             source={icons.leftArrow}
             resizeMode='contain'

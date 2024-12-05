@@ -1,8 +1,8 @@
 import { SplashScreen, Stack } from 'expo-router'
 import { useFonts } from 'expo-font'
 import { useEffect } from 'react';
-import { AuthProvider } from './context/AuthContext';
-import { RegexProvider } from './context/RegexContext';
+import { AuthProvider } from '../context/AuthContext';
+import { RegexProvider } from '../context/RegexContext';
 import '../global.css'
 
 SplashScreen.preventAutoHideAsync();
@@ -32,13 +32,7 @@ const RootLayout = () => {
           <Stack.Screen name="index" options={screenOptions} />
           <Stack.Screen name="(auth)" options={screenOptions} />
           <Stack.Screen name="(tabs)" options={screenOptions} />
-
-          <Stack.Screen
-            name='about'
-            options={{
-              headerShown: false
-            }}
-          />
+          <Stack.Screen name='about' options={screenOptions} />
         </Stack>
       </RegexProvider>
     </AuthProvider>

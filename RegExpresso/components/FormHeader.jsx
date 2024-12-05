@@ -2,7 +2,7 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { images } from '../constants'
 
-const FormHeader = ({ title }) => {
+const FormHeader = ({ title, textStyles = "" }) => {
     return (
         <View className='relative items-center mt-10'>
             <Image
@@ -12,11 +12,11 @@ const FormHeader = ({ title }) => {
             />
 
             <Text
-                className='text-text 
+                className={`text-text 
                         font-poppinsBold 
-                        text-6xl 
                         text-center 
-                        text-balance pt-2'
+                        text-balance pt-2
+                        ${textStyles}`}
             >
                 {title}
             </Text>

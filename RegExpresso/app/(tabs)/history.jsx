@@ -1,9 +1,8 @@
 import { View, Text, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
-import CustomDisplay from '../../components/CustomDisplay'
 import HistoryComponent from '../../components/HistoryComponent'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 import HistoryNotLogged from '../../components/HistoryNotLogged'
 import useRegexOptions from '../../hooks/useRegexOptions'
 
@@ -14,7 +13,7 @@ const History = () => {
     return (
         <SafeAreaView className='bg-background-primary min-h-full'>
             <View className=" w-full h-full items-center justify-center p-10">
-                <Text className="font-poppinsBold text-4xl text-text">RegEx History</Text>
+                <Text className="font-poppinsBold text-4xl text-text py-1">RegEx History</Text>
                 {!token ?
                     <HistoryNotLogged />
                     :
@@ -30,7 +29,7 @@ const History = () => {
                                 {errorMessageDelete}
                             </Text>
                         ) : null}
-        
+
                         <HistoryComponent token={token} />
                     </>
                 }

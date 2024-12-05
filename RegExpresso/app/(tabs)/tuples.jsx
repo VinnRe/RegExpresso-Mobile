@@ -1,9 +1,8 @@
 import { Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import CustomDisplay from '../../components/CustomDisplay'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomTable from '../../components/CustomTable'
-import { useRegex } from '../context/RegexContext';
+import { useRegex } from '../../context/RegexContext';
 import useTuples from '../../hooks/useTuples';
 
 const Tuples = () => {
@@ -24,7 +23,7 @@ const Tuples = () => {
                 }
                 setTuplesData(tupleGroup);
             }
-    
+
             if (regexValue) {
                 getTuples();
             }
@@ -43,7 +42,7 @@ const Tuples = () => {
                     <Text className='text-text-error font-poppinsRegular text-l mt-3'>
                         {errorMessage}
                     </Text>
-                ) : null }
+                ) : null}
                 <CustomTable tuples={tuplesData} />
             </View>
         </SafeAreaView>

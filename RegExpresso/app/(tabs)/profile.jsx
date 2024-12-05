@@ -3,8 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
 import { router } from 'expo-router';
 import CustomButton from "../../components/CustomButton";
-import CustomDeleteButton from '../../components/CustomDeleteButton';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 const Profile = () => {
   const { user, token, handleLogout } = useAuth();
@@ -16,10 +15,10 @@ const Profile = () => {
       >
         <View className=" w-full h-full items-center justify-center px-10 ">
           {!token ?
-            <Text className='font-poppinsBold text-4xl text-text'>
+            <Text className='font-poppinsBold text-4xl text-text py-1'>
               Not logged in yet
             </Text> :
-            <Text className='font-poppinsBold text-4xl text-text'>
+            <Text className='font-poppinsBold text-4xl text-text py-1'>
               Hello there,&nbsp;
               {user}
             </Text>
@@ -37,11 +36,19 @@ const Profile = () => {
               handlePress={() => { router.push('/login') }}
               containerStyles="w-full mt-3"
             /> :
-            <CustomDeleteButton
-              title="Logout"
-              handlePress={() => { handleLogout(); router.push('/login'); }}
-              containerStyles="w-full mt-3"
-            />
+            <>
+              <CustomButton
+                title="Change password"
+                handlePress={() => { router.push('/changePassword') }}
+                containerStyles="w-full mt-3"
+              />
+
+              <CustomButton
+                title="Logout"
+                handlePress={() => { handleLogout(); router.push('/login'); }}
+                containerStyles="w-full mt-3 bg-button-bgRed"
+              />
+            </>
           }
         </View>
       </ScrollView>

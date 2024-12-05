@@ -1,13 +1,13 @@
 import { Text, View, ScrollView } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useState } from 'react';
-import { useRegex } from '../context/RegexContext';
+import { useRegex } from '../../context/RegexContext';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import CustomDisplay from '../../components/CustomDisplay';
 import GraphComponent from '../../components/GraphComponent';
 import useRegexOptions from '../../hooks/useRegexOptions';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 const Home = () => {
   const { regexValue, setRegexValue, fsmType, setFsmType } = useRegex();
@@ -19,7 +19,7 @@ const Home = () => {
     saveRegex(regexValue, token);
     setErrorMessageSave("");
   };
-  
+
   const handleDFASubmit = () => {
     setFsmType('DFA');
     saveRegex(regexValue, token);
@@ -42,8 +42,8 @@ const Home = () => {
           />
 
           {errorMessageSave ? (
-            <Text className='text-text-error font-poppinsRegular text-l mt-3'>
-                {errorMessageSave}
+            <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
+              {errorMessageSave}
             </Text>
           ) : null}
 

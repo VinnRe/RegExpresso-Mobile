@@ -6,7 +6,7 @@ import FormHeader from '../../components/FormHeader';
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import FormFooter from '../../components/FormFooter';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import * as SecureStorage from 'expo-secure-store'
 
 const Signup = () => {
@@ -30,17 +30,17 @@ const Signup = () => {
             if (!form.username || !form.email || !form.password || !form.confirmPassword) {
                 setIsErrorMessage("Please fill up all the fields!")
             }
-            
+
             if (form.password.length < 8) {
                 setIsErrorMessage("Password must be greater than or equal to 8.")
                 return
             }
-            
+
             if (form.password !== form.confirmPassword) {
                 setIsErrorMessage("Passwords do not match!")
                 return
-            } 
-            
+            }
+
             const isSuccess = await handleSignup(form.username, form.email, form.password)
             if (isSuccess) {
                 router.push('/home');
@@ -49,7 +49,7 @@ const Signup = () => {
                 setIsErrorMessage("Please fill up all the fields!")
                 return
             }
-            
+
         } catch (error) {
             setIsErrorMessage("Oh no! An error occured please try again later.")
         }
@@ -59,7 +59,10 @@ const Signup = () => {
         <SafeAreaView className='bg-background-primary h-full'>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View className=" w-full h-full items-center justify-center px-10">
-                    <FormHeader title='Signup' />
+                    <FormHeader
+                        title='Signup'
+                        textStyles='text-6xl'
+                    />
 
                     <FormField
                         title='Username'

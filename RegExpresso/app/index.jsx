@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import {
   Text,
   View,
@@ -11,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from '../constants';
 import CustomButton from "../components/CustomButton";
 import { useInputValidation } from "../hooks/useInputValidation";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function App() {
 
@@ -63,12 +62,12 @@ export default function App() {
             <Text
               className="text-text 
                 font-poppinsBold
-                text-xl mt-5 mb-5"
+                text-xl mt-10"
             >
-              Welcome back, {user}
+              Welcome back, {user}!
             </Text>
 
-            
+
           )}
 
           <CustomButton
@@ -77,27 +76,25 @@ export default function App() {
             containerStyles="w-full mt-3"
           />
 
-          { !token ? (
-              <>
-                <CustomButton
-                  title="Login"
-                  handlePress={() => { router.push('/login') }}
-                  containerStyles="w-full mt-3"
-                />
-      
-                <CustomButton
-                  title="Signup"
-                  handlePress={() => { router.push('/signup') }}
-                  containerStyles="w-full mt-3"
-                />
-              </>
-          ) : null }
+          {!token ? (
+            <>
+              <CustomButton
+                title="Login"
+                handlePress={() => { router.push('/login') }}
+                containerStyles="w-full mt-3"
+              />
+
+              <CustomButton
+                title="Signup"
+                handlePress={() => { router.push('/signup') }}
+                containerStyles="w-full mt-3"
+              />
+            </>
+          ) : null}
 
 
         </View>
       </ScrollView>
-
-      <StatusBar style='light' />
     </SafeAreaView >
   );
 }

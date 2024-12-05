@@ -48,6 +48,26 @@ const FormField = ({
                 </TouchableOpacity>
             )}
 
+            {title === "New password" && (
+                <TouchableOpacity onPress={togglePasswordVisibility}>
+                    <Image
+                        source={!showPassword ? icons.eye : icons.eyeHide}
+                        className="w-8 h-8 absolute top-5 right-2"
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
+            )}
+
+            {title === "Confirm new password" && (
+                <TouchableOpacity onPress={togglePasswordVisibility}>
+                    <Image
+                        source={!showPassword ? icons.eye : icons.eyeHide}
+                        className="w-8 h-8 absolute top-5 right-2"
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
+            )}
+
         </View>
     )
 }
