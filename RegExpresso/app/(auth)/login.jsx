@@ -25,7 +25,7 @@ const Login = () => {
             const isSuccess = await handleLogin(form.username, form.password)
 
             if (isSuccess) {
-                router.push('/home');
+                router.replace('/home');
                 setIsWrongCreds(false)
             } else {
                 setIsWrongCreds(true)

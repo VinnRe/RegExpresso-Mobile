@@ -53,7 +53,7 @@ const HistoryComponent = ({ token }) => {
         handlePress={() => {
           setRegexValue(item.regEx);
           handleDFASubmit(item.regEx);
-          router.push('/home');
+          router.navigate('/home');
         }}
         containerStyles="w-3/4 bg-accent p-2 rounded-md"
         textStyle="font-poppinsMedium text-white text-lg"

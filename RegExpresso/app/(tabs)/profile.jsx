@@ -33,7 +33,7 @@ const Profile = () => {
           {!token ?
             <CustomButton
               title="Login"
-              handlePress={() => { router.push('/login') }}
+              handlePress={() => { router.replace('/login') }}
               containerStyles="w-full mt-3"
             /> :
             <>
@@ -45,7 +45,7 @@ const Profile = () => {
 
               <CustomButton
                 title="Logout"
-                handlePress={() => { handleLogout(); router.push('/login'); }}
+                handlePress={() => { handleLogout(); router.replace('/login'); }}
                 containerStyles="w-full mt-3 bg-button-bgRed"
               />
             </>

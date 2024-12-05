@@ -43,7 +43,7 @@ const Signup = () => {
 
             const isSuccess = await handleSignup(form.username, form.email, form.password)
             if (isSuccess) {
-                router.push('/home');
+                router.replace('/home');
                 setIsErrorMessage("")
             } else {
                 setIsErrorMessage("Please fill up all the fields!")

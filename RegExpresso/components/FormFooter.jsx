@@ -10,7 +10,7 @@ const FormFooter = ({ textValue, link, linkValue }) => {
         <View className='relative w-full items-center justify-center'>
             <Text className='text-text text-center font-poppinsRegular text-xl mt-3 relative z-10'>
                 {textValue}&nbsp;
-                <Link href={link} className='text-text font-poppinsMedium text-lg'>
+                <Link href={link} replace className='text-text font-poppinsMedium text-lg'>
                     {linkValue}
                 </Link>
             </Text>
@@ -23,7 +23,7 @@ const FormFooter = ({ textValue, link, linkValue }) => {
 
             <CustomButton
                 title="Continue as Guest"
-                handlePress={() => { router.push('/home') }}
+                handlePress={() => { router.replace('/home') }}
                 containerStyles="w-full"
                 textStyles='text-2xl'
             />

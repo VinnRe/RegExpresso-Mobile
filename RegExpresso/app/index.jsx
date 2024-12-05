@@ -72,7 +72,7 @@ export default function App() {
 
           <CustomButton
             title="Start Converting"
-            handlePress={() => { router.push('/home') }}
+            handlePress={() => { router.replace('/home') }}
             containerStyles="w-full mt-3"
           />
 
@@ -80,13 +80,13 @@ export default function App() {
             <>
               <CustomButton
                 title="Login"
-                handlePress={() => { router.push('/login') }}
+                handlePress={() => { router.replace('/login') }}
                 containerStyles="w-full mt-3"
               />
 
               <CustomButton
                 title="Signup"
-                handlePress={() => { router.push('/signup') }}
+                handlePress={() => { router.replace('/signup') }}
                 containerStyles="w-full mt-3"
               />
             </>
