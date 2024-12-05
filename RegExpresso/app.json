@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.triplethreat.regexpresso"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +32,15 @@
     "plugins": [
       "expo-router",
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "08053d74-6055-4984-9cf7-2c1d63844cb2"
+      }
+    },
+    "owner": "vinnre"
   }
 }
