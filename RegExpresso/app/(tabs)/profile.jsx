@@ -4,12 +4,10 @@ import React from 'react';
 import { router } from 'expo-router';
 import CustomButton from "../../components/CustomButton";
 import CustomDeleteButton from '../../components/CustomDeleteButton';
-import { useAuth, getUserData } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const Profile = () => {
   const { user, token, handleLogout } = useAuth();
-
-  console.log(user)
 
   return (
     <SafeAreaView className='bg-background-primary min-h-full'>
