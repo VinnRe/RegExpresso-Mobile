@@ -29,12 +29,13 @@ export default function App() {
 
           <View className='relative justify-center items-center'>
             <Text
-              className='text-text 
-                font-poppinsBold text-6xl 
-                text-center text-balance pt-2'
-            >
-              From Regex to Automata, {'\n'}Simplified
-            </Text>
+                className="text-text font-poppinsBold text-6xl text-center leading-tight pt-2"
+              >
+                From {'\n'}
+                Regex to {'\n'}
+                Automata {'\n'}
+                Simplified
+              </Text>
 
             <Text
               className='text-text 
