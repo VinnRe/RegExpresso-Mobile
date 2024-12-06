@@ -131,24 +131,8 @@ Copyright © 2024 TripleThreat
 
 ## How to Install
 
-Add Stuff here for installation of APK in android
-
----
-
-### Frontend Setup
-
-Open the frontend folder in the CLI
-
-`cd RegExpresso`
-
-Once opened, download the required packages
-
-`npx expo install`
-
-
-Then we can open up the mobile application using Expo Go
-
-`npx expo start`
+Check out our package releases!
+[Download Pre-Release](https://github.com/VinnRe/RegExpresso-Mobile/releases/tag/v1)
 
 ---
 
