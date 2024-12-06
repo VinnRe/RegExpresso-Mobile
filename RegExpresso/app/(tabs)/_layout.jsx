@@ -64,6 +64,8 @@ const TabsLayout = () => {
                 tabBarStyle: {
                     backgroundColor: "#e8cdad",
                     borderTopWidth: 0,
+                    elevation: 0,      // Removes the shadow (Android)
+                    shadowOpacity: 0,  // Removes the shadow (iOS fallback, just in case)
                 }
             }}
         >
