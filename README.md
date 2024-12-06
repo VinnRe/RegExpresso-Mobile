@@ -51,48 +51,48 @@ Copyright © 2024 TripleThreat
 
 ### Landing Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_NotLogged.jpg" alt="Landing Page Not Logged" style="max-width: 100%; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_Logged.jpg" alt="Landing Page Logged" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_NotLogged.jpg" alt="Landing Page Not Logged" style="width: 150; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_Logged.jpg" alt="Landing Page Logged" style="width: 150; height: 50%;">
 </div>
 
 ### Login Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Login.jpg" alt="Login Page" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Login.jpg" alt="Login Page" style="width: 150; height: 50%;">
 </div>
 
 ### Signup Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Signup.jpg" alt="Signup Page" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Signup.jpg" alt="Signup Page" style="width: 150; height: 50%;">
 </div>
 
 ### Home Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home.jpg" alt="Home Page" style="max-width: 100%; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home_Example.jpg" alt="Home Page Example" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home.jpg" alt="Home Page" style="width: 150; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home_Example.jpg" alt="Home Page Example" style="width: 150; height: 50%;">
 </div>
 
 ### Tuples Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples.jpg" alt="Tuples Page" style="max-width: 100%; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples_Example.jpg" alt="Tuples Page Example" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples.jpg" alt="Tuples Page" style="width: 150; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples_Example.jpg" alt="Tuples Page Example" style="width: 150; height: 50%;">
 </div>
 
 ### History Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_NotLogged.jpg" alt="History Page Not Logged" style="max-width: 100%; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_Logged.jpg" alt="History Page Logged" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_NotLogged.jpg" alt="History Page Not Logged" style="width: 150; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_Logged.jpg" alt="History Page Logged" style="width: 150; height: 50%;">
 </div>
 
 ### Profile Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_NotLogged.jpg" alt="Profile Page Not Logged" style="max-width: 100%; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_Logged.jpg" alt="Profile Page Logged" style="max-width: 100%; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_ChangePass.jpg" alt="Profile Page Change Password" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_NotLogged.jpg" alt="Profile Page Not Logged" style="width: 150; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_Logged.jpg" alt="Profile Page Logged" style="width: 150; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_ChangePass.jpg" alt="Profile Page Change Password" style="width: 150; height: 50%;">
 </div>
 
 ### About Page
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/About.jpg" alt="About Page" style="max-width: 100%; height: 50%;">
+  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/About.jpg" alt="About Page" style="width: 150; height: 50%;">
 </div>
 
 
