@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRegex } from '../../context/RegexContext';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import CustomDisplay from '../../components/CustomDisplay';
+import CustomDisplayZoomable from '../../components/CustomDisplayZoomable';
 import GraphComponent from '../../components/GraphComponent';
 import useRegexOptions from '../../hooks/useRegexOptions';
 import { useAuth } from '../../context/AuthContext';
@@ -34,7 +34,7 @@ const Home = () => {
             Finite State Automata
           </Text>
 
-          <CustomDisplay
+          <CustomDisplayZoomable
             Component={GraphComponent}
             componentProps={{ regEx: regexValue, type: fsmType }}
           />
