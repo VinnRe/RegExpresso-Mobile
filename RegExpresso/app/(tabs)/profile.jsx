@@ -1,9 +1,10 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
 import { router } from 'expo-router';
 import CustomButton from "../../components/CustomButton";
 import { useAuth } from '../../context/AuthContext';
+import images from '../../constants/images.js'
 
 const Profile = () => {
   const { user, token, handleLogout } = useAuth();
@@ -14,13 +15,17 @@ const Profile = () => {
         contentContainerStyle={{ flexGrow: 1 }}
       >
         <View className=" w-full h-full items-center justify-center px-10 ">
+          <Image
+              source={images.logo}
+              className='w-[350px] h-[200px] ml-[-28px] mt-[-60px] mb-[-30px]'
+              resizeMode='contain'
+          />
           {!token ?
             <Text className='font-poppinsBold text-4xl text-text py-1'>
               Not logged in yet
             </Text> :
-            <Text className='font-poppinsBold text-4xl text-text py-1'>
-              Hello there,&nbsp;
-              {user}
+            <Text className="font-poppinsBold text-4xl text-text py-1">
+              Hello there, <Text className="text-text">{user}</Text>
             </Text>
           }
 
