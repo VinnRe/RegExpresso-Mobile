@@ -50,51 +50,82 @@ Copyright © 2024 TripleThreat
 ## How the Mobile Application Looks
 
 ### Landing Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_NotLogged.jpg" alt="Landing Page Not Logged" style="width: 150px; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_Logged.jpg" alt="Landing Page Logged" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_NotLogged.jpg" width="150"></td>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/LandingPage_Logged.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### Login Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Login.jpg" alt="Login Page" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Login.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### Signup Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Signup.jpg" alt="Signup Page" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Signup.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### Home Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home.jpg" alt="Home Page" style="width: 150px; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home_Example.jpg" alt="Home Page Example" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home.jpg" width="150"></td>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Home_Example.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### Tuples Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples.jpg" alt="Tuples Page" style="width: 150px; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples_Example.jpg" alt="Tuples Page Example" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples.jpg" width="150"></td>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Tuples_Example.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### History Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_NotLogged.jpg" alt="History Page Not Logged" style="width: 150px; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_Logged.jpg" alt="History Page Logged" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_NotLogged.jpg" width="150"></td>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/History_Logged.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### Profile Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_NotLogged.jpg" alt="Profile Page Not Logged" style="width: 150px; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_Logged.jpg" alt="Profile Page Logged" style="width: 150px; height: 50%;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_ChangePass.jpg" alt="Profile Page Change Password" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_NotLogged.jpg" width="150"></td>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_Logged.jpg" width="150"></td>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/Profile_ChangePass.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
 
 ### About Page
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/About.jpg" alt="About Page" style="width: 150px; height: 50%;">
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/VinnRe/RegExpresso-Mobile/blob/main/Images/About.jpg" width="150"></td>
+    </tr>
+  </table>
 </div>
-
 
 ---
 
