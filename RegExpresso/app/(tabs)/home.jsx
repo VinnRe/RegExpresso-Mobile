@@ -34,10 +34,14 @@ const Home = () => {
             Finite State Automata
           </Text>
 
-          <CustomDisplayZoomable
-            Component={GraphComponent}
-            componentProps={{ regEx: regexValue, type: fsmType }}
-          />
+          <View className='border-2 rounded-xl mt-4 mb-[-12px] aspect-video w-full'>
+            <CustomDisplayZoomable>
+              <GraphComponent
+                regEx={regexValue}
+                type={fsmType}
+              />
+            </CustomDisplayZoomable>
+          </View>
 
           {errorMessageSave ? (
             <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
@@ -45,7 +49,7 @@ const Home = () => {
             </Text>
           ) : (
             <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
-              
+
             </Text>
           )}
 

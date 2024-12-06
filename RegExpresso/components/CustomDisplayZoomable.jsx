@@ -1,57 +1,89 @@
 import React from 'react';
-import { Dimensions, View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import {
-    Gesture,
-    GestureDetector,
-    GestureHandlerRootView,
+  GestureHandlerRootView,
+  PinchGestureHandler,
+  PanGestureHandler,
+  State,
 } from 'react-native-gesture-handler';
 import Animated, {
-    useSharedValue,
-    useAnimatedStyle,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  useAnimatedGestureHandler,
+  interpolate,
 } from 'react-native-reanimated';
 
-const { width, height } = Dimensions.get('screen');
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-function clamp(val, min, max) {
-    return Math.min(Math.max(val, min), max);
-}
+const CustomDisplayZoomable = ({ children }) => {
+  const scale = useSharedValue(1);
+  const focalX = useSharedValue(0);
+  const focalY = useSharedValue(0);
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
 
-const CustomDisplayZoomable = ({ Component, componentProps }) => {
-    // Shared values for panning
-    const translateX = useSharedValue(0);
-    const translateY = useSharedValue(0);
-    const startX = useSharedValue(0);
-    const startY = useSharedValue(0);
+  const pinchHandler = useAnimatedGestureHandler({
+    onStart: (_, context) => {
+      context.startScale = scale.value;
+    },
+    onActive: (event, context) => {
+      scale.value = context.startScale * event.scale;
+      focalX.value = event.focalX;
+      focalY.value = event.focalY;
+    },
+    onEnd: () => {
+      scale.value = withTiming(Math.max(0.5, Math.min(scale.value, 3)));
+    },
+  });
 
-    // Pan gesture
-    const pan = Gesture.Pan()
-        .onStart(() => {
-        startX.value = translateX.value;
-        startY.value = translateY.value;
-        })
-        .onUpdate((event) => {
-        translateX.value = startX.value + event.translationX;
-        translateY.value = startY.value + event.translationY;
-        });
+  const panHandler = useAnimatedGestureHandler({
+    onStart: (_, context) => {
+      context.startX = translateX.value;
+      context.startY = translateY.value;
+    },
+    onActive: (event, context) => {
+      translateX.value = context.startX + event.translationX;
+      translateY.value = context.startY + event.translationY;
+    },
+    onEnd: () => {
+      translateX.value = withTiming(translateX.value);
+      translateY.value = withTiming(translateY.value);
+    },
+  });
 
-    // Animated styles for transformation (panning)
-    const animatedStyles = useAnimatedStyle(() => ({
-        transform: [
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { scale: scale.value },
         { translateX: translateX.value },
         { translateY: translateY.value },
-        ],
-  }));
+      ],
+    };
+  });
 
   return (
-    <View className="aspect-video border-2 border-input-focus w-full items-center justify-center p-2 rounded-lg overflow-hidden">
-      <GestureHandlerRootView className="flex-1 justify-center items-center">
-        <GestureDetector gesture={pan}>
-          <Animated.View className="aspect-[16/9] p-2 rounded-lg justify-center items-center" style={animatedStyles}>
-            <Component {...componentProps} />
-          </Animated.View>
-        </GestureDetector>
-      </GestureHandlerRootView>
-    </View>
+    <GestureHandlerRootView style={{ flex: 1, width: '100%' }}>
+      <PinchGestureHandler onGestureEvent={pinchHandler}>
+        <Animated.View style={{ flex: 1 }}>
+          <PanGestureHandler onGestureEvent={panHandler}>
+            <Animated.View
+              style={[
+                {
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                },
+                animatedStyle
+              ]}
+            >
+              {children}
+            </Animated.View>
+          </PanGestureHandler>
+        </Animated.View>
+      </PinchGestureHandler>
+    </GestureHandlerRootView>
   );
 };
 
