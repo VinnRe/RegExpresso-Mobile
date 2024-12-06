@@ -34,7 +34,7 @@ const Home = () => {
             Finite State Automata
           </Text>
 
-          <View className='border-2 rounded-xl mt-4 mb-[-12px] aspect-video w-full'>
+          <View className='border-2 rounded-xl mt-4 mb-[-24px] aspect-video w-full overflow-hidden'>
             <CustomDisplayZoomable>
               <GraphComponent
                 regEx={regexValue}
