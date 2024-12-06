@@ -11,7 +11,7 @@ import { useAuth } from '../../context/AuthContext';
 
 const Home = () => {
   const { regexValue, setRegexValue, fsmType, setFsmType } = useRegex();
-  const { saveRegex, errorMessageSave, setErrorMessageSave } = useRegexOptions();
+  const { saveRegex } = useRegexOptions();
   const { token } = useAuth();
 
   const handleNFASubmit = () => {
@@ -30,11 +30,11 @@ const Home = () => {
         contentContainerStyle={{ flexGrow: 1 }}
       >
         <View className='w-full h-full items-center justify-center px-10'>
-          <Text className='font-poppinsBold text-3xl text-text'>
+          <Text className='font-poppinsBold text-3xl text-text text-center'>
             Finite State Automata
           </Text>
 
-          <View className='border-2 rounded-xl mt-4 mb-[-24px] aspect-video w-full overflow-hidden'>
+          <View className='border-2 rounded-xl mt-4 aspect-video w-full overflow-hidden'>
             <CustomDisplayZoomable>
               <GraphComponent
                 regEx={regexValue}
@@ -43,15 +43,7 @@ const Home = () => {
             </CustomDisplayZoomable>
           </View>
 
-          {errorMessageSave ? (
-            <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
-              {errorMessageSave}
-            </Text>
-          ) : (
-            <Text className='text-text-error font-poppinsMedium text-lg mt-3'>
-
-            </Text>
-          )}
+          <Text className="text-text font-poppinsMedium text-l">The graph can be zoomed in and out.</Text>
 
           <CustomInput
             label="Enter regular expression"
