@@ -65,6 +65,7 @@ const Login = () => {
                         secureTextEntry={!showPassword}
                         togglePasswordVisibility={togglePasswordVisibility}
                         showPassword={showPassword}
+                        isPasswordField={true}
                     />
 
                     {isWrongCreds ? (

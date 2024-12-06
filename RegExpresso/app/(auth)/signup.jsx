@@ -87,6 +87,7 @@ const Signup = () => {
                         secureTextEntry={!showPassword}
                         togglePasswordVisibility={togglePasswordVisibility}
                         showPassword={showPassword}
+                        isPasswordField={true}
                     />
 
                     <FormField
@@ -97,6 +98,8 @@ const Signup = () => {
                         secureTextEntry={!showConfirmPassword}
                         togglePasswordVisibility={toggleConfirmPasswordVisibility}
                         showPassword={showConfirmPassword}
+                        isPasswordField={true}
+
                     />
 
                     {isErrorMessage ? (

@@ -15,6 +15,7 @@ const PasswordField = ({ title, value, handleChangeText, otherStyles }) => {
             secureTextEntry={!showPassword}
             togglePasswordVisibility={togglePasswordVisibility}
             showPassword={showPassword}
+            isPasswordField={true}
         />
     );
 };

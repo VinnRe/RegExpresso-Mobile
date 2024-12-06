@@ -1,7 +1,6 @@
 import { TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
 import CustomInput from './CustomInput'
-import { useInputValidation } from '../hooks/useInputValidation'
 import { icons } from '../constants'
 
 const FormField = ({
@@ -13,8 +12,8 @@ const FormField = ({
     secureTextEntry,
     togglePasswordVisibility,
     showPassword,
+    isPasswordField = false,
     ...props }) => {
-    const { inputValue, hasError, handleInputChange } = useInputValidation();
 
     return (
         <View className={`space-y-2 ${otherStyles}`}>
@@ -22,52 +21,20 @@ const FormField = ({
                 label={title}
                 value={value}
                 onChangeText={handleChangeText}
-                hasError={hasError}
                 leftProperty='left-4'
                 secureTextEntry={secureTextEntry}
                 {...props}
             />
 
-            {title === "Password" && (
+            {isPasswordField && (
                 <TouchableOpacity onPress={togglePasswordVisibility}>
                     <Image
                         source={!showPassword ? icons.eye : icons.eyeHide}
                         className="w-8 h-8 absolute top-5 right-2"
-                        resizeMode='contain'
+                        resizeMode="contain"
                     />
                 </TouchableOpacity>
             )}
-
-            {title === "Confirm password" && (
-                <TouchableOpacity onPress={togglePasswordVisibility}>
-                    <Image
-                        source={!showPassword ? icons.eye : icons.eyeHide}
-                        className="w-8 h-8 absolute top-5 right-2"
-                        resizeMode='contain'
-                    />
-                </TouchableOpacity>
-            )}
-
-            {title === "New password" && (
-                <TouchableOpacity onPress={togglePasswordVisibility}>
-                    <Image
-                        source={!showPassword ? icons.eye : icons.eyeHide}
-                        className="w-8 h-8 absolute top-5 right-2"
-                        resizeMode='contain'
-                    />
-                </TouchableOpacity>
-            )}
-
-            {title === "Confirm new password" && (
-                <TouchableOpacity onPress={togglePasswordVisibility}>
-                    <Image
-                        source={!showPassword ? icons.eye : icons.eyeHide}
-                        className="w-8 h-8 absolute top-5 right-2"
-                        resizeMode='contain'
-                    />
-                </TouchableOpacity>
-            )}
-
         </View>
     )
 }
